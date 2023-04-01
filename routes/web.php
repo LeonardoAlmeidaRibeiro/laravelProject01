@@ -16,12 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect()->route('admin.clientes');
 });
 
-// Route::get('/empresa', function () {
-//     return view('site.empresa');
-// });
+Route::group([
+    'prefix' => 'admin',
+    'as'     => 'admin.'
+], function () {
+    Route::get('dashboard', function () {
+        return 'dashboard';
+    })->name('dashboard');
+    Route::get('usuarios', function () {
+        return 'usuarios';
+    })->name('usuarios');
+    Route::get('clientes', function () {
+        return 'clientes';
+    })->name('clientes');
+});
 
-Route::get('/index',[ProdutoController::class,'index'])->name('produto.index');
-Route::get('/produto/{id?}',[ProdutoController::class,'show'])->name('produto.index');
+
+Route::get('/index', [ProdutoController::class, 'index'])->name('produto.index');
+Route::get('/produto/{id?}', [ProdutoController::class, 'show'])->name('produto.index');
