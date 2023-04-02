@@ -12,7 +12,7 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::all();
       
-        return view('site.home');
+        return view('site.home', compact('produtos'));
     }
 
     public function show($id=0)
