@@ -20,7 +20,7 @@ class LoginController extends Controller
             'password.required' => 'O campo senha é obrigatório!'
         ]);
 
-        if (Auth::attempt($credenciais)) {
+        if (Auth::attempt($credenciais,$request->remember)) {
             $request->session()->regenerate();
             return redirect()->route('site.index');
         } else {
@@ -34,5 +34,10 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('site.index');
+    }
+
+    public function create()
+    {
+        return view('login.create');
     }
 }
