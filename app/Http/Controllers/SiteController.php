@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Gate;
 
 
 
+
 class SiteController extends Controller
 {
 
@@ -21,15 +22,15 @@ class SiteController extends Controller
 
     public function details($slug)
     {
-        $produto = Produto::where('slug',$slug)->first();
-        Gate::authorize('ver-produto',$produto);
+        $produto = Produto::where('slug', $slug)->first();
+        Gate::authorize('ver-produto', $produto);
         return view('site.details', compact('produto'));
     }
 
     public function categoria($id)
     {
-        $produtos = Produto::where('id_categoria',$id)->paginate(3);
-        $categoria = Categoria::where('id',$id)->first();
-        return view('site.categoria', compact('produtos','categoria'));
+        $produtos = Produto::where('id_categoria', $id)->paginate(3);
+        $categoria = Categoria::where('id', $id)->first();
+        return view('site.categoria', compact('produtos', 'categoria'));
     }
 }
