@@ -32,8 +32,10 @@ Route::post('/auth',[LoginController::class,'auth'])->name('login.auth');
 Route::get('/logout',[LoginController::class,'logout'])->name('login.logout');
 Route::get('/register',[LoginController::class,'create'])->name('login.create');
 
-Route::get('/admin/dashboard',[DashBordController::class,'index'])->name('admin.dashboard')->middleware(['checkemail','auth']);
+Route::get('/admin/dashboard',[DashBordController::class,'index'])->name('admin.dashboard')->middleware('auth');
+Route::get('/admin/produtos', [DashBordController::class,'FunctionName'])->name('admin.produtos');
 
+// Route::get('/admin/produtos',[DashBordController::class,'index'])->name('admin.produtos')->middleware('auth');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
