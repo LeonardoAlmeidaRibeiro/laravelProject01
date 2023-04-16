@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
+
 use Illuminate\Http\Request;
+use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
 
     public function index()
     {
-        $produtos = Produto::all();
-      
+        $produtos = Produto::paginate(3);
+        
         return view('site.home', compact('produtos'));
     }
 
-    public function show($id=0)
-    {
-        return 'Show:' . $id;
-    }
 }
