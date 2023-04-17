@@ -11,9 +11,15 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        $produtos = Produto::paginate(3);
+        $produtos = Produto::paginate(5);
         
-        return view('site.home', compact('produtos'));
+        return view('admin\produtos', compact('produtos'));
     }
 
+    public function destroy ($id)
+    {
+        $produtos = Produto::find($id);
+        $produtos->delete();
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto removido com sucesso.');
+    }
 }

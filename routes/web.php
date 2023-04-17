@@ -33,7 +33,9 @@ Route::get('/logout',[LoginController::class,'logout'])->name('login.logout');
 Route::get('/register',[LoginController::class,'create'])->name('login.create');
 
 Route::get('/admin/dashboard',[DashBordController::class,'index'])->name('admin.dashboard')->middleware('auth');
-Route::get('/admin/produtos', [DashBordController::class,'FunctionName'])->name('admin.produtos');
+Route::get('/admin/produtos', [ProdutoController::class,'index'])->name('admin.produtos');
+Route::delete('/admin/produtos/delete/{id}', [ProdutoController::class,'destroy'])->name('admin.delete');
+
 
 // Route::get('/admin/produtos',[DashBordController::class,'index'])->name('admin.produtos')->middleware('auth');
 // Route::get('/', function () {
