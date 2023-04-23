@@ -7,14 +7,20 @@
 
             </div>
 
-            
-            <form action="{{ route('admin.delete', $produto->id) }}" method="POST">
+
+            <form action="{{ route('admin.produto.delete', $produto->id) }}" method="POST">
                 @method('DELETE')
                 @csrf
-                <button type="submit" class="waves-effect waves-green btn red right">Excluir</button>&nbsp;
-                <a href="#!" class="modal-close waves-effect waves-green btn blue right">Cancelar</a>
+                <div class="row">
+                    <div class="col s10">
+                        <button type="submit"  class="waves-effect waves-green btn red right">Excluir</button>&nbsp;&nbsp;
+                    </div>
+                    <div class="col s12">
+                        <a href="#!" class="modal-close waves-effect waves-green btn blue right">Cancelar</a>
+                    </div>
+                </div>
                 <br>
-                
+
             </form>
 
         </div>
